@@ -111,6 +111,11 @@
       background: var(--maths);
     }
 
+    .subject-tabs button[data-subject="danger"].active {
+      background: #f87171;
+      color: var(--bg-deep);
+    }
+
     .progress-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -350,6 +355,179 @@
       box-shadow: 0 0 0 3px var(--accent-dim);
     }
 
+    /* Small correct vs incorrect bar pair (per chapter) */
+    .chapter-mini-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.85rem;
+      padding: 0.35rem 1.15rem 0.55rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid var(--border);
+    }
+
+    .mini-bar-pair {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+
+    .mini-legend {
+      font-size: 0.58rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mini-legend.cor {
+      color: #4ade80;
+    }
+
+    .mini-legend.wro {
+      color: #f87171;
+    }
+
+    .mini-bar-track {
+      width: 11px;
+      height: 26px;
+      border-radius: 3px;
+      background: var(--bg-elevated);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .mini-bar-fill {
+      width: 100%;
+      border-radius: 2px;
+      transition: height 0.2s ease;
+      min-height: 0;
+      box-sizing: border-box;
+    }
+
+    .mini-bar-fill.mini-bar-correct {
+      border: 2px solid #22c55e;
+      background: rgba(34, 197, 94, 0.22);
+    }
+
+    .mini-bar-fill.mini-bar-wrong {
+      border: 2px solid #ef4444;
+      background: rgba(239, 68, 68, 0.2);
+    }
+
+    .mini-val {
+      font-family: ui-monospace, monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* Topics in Danger panel */
+    .danger-panel .danger-head {
+      padding: 0.85rem 1.15rem;
+      background: rgba(248, 113, 113, 0.08);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .danger-panel .danger-head strong {
+      color: #fca5a5;
+    }
+
+    .danger-empty {
+      padding: 1.5rem 1.15rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .danger-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.5rem 0.75rem;
+      align-items: center;
+      padding: 0.65rem 1.15rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    .danger-row:last-child {
+      border-bottom: none;
+    }
+
+    .danger-rank {
+      font-family: ui-monospace, monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #f87171;
+      min-width: 1.75rem;
+    }
+
+    .danger-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.5rem;
+      min-width: 0;
+    }
+
+    .danger-pill {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .danger-pill.physics {
+      background: rgba(110, 181, 255, 0.2);
+      color: var(--physics);
+    }
+
+    .danger-pill.chemistry {
+      background: rgba(199, 146, 234, 0.2);
+      color: var(--chemistry);
+    }
+
+    .danger-pill.maths {
+      background: rgba(247, 140, 108, 0.2);
+      color: var(--maths);
+    }
+
+    .danger-title {
+      font-weight: 500;
+      color: var(--text);
+      min-width: 0;
+      flex: 1;
+    }
+
+    .danger-gap {
+      font-family: ui-monospace, monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: right;
+      line-height: 1.35;
+    }
+
+    .danger-gap span.cor {
+      color: #4ade80;
+    }
+
+    .danger-gap span.wro {
+      color: #f87171;
+    }
+
+    .danger-gap .gap-small {
+      display: block;
+      font-size: 0.62rem;
+      opacity: 0.85;
+      margin-top: 0.15rem;
+    }
+
     /* Mock tests section */
     .mock-section {
       background: var(--bg-card);
@@ -540,6 +718,7 @@
       <button type="button" class="active" data-subject="physics" role="tab" aria-selected="true">Physics</button>
       <button type="button" data-subject="chemistry" role="tab" aria-selected="false">Chemistry</button>
       <button type="button" data-subject="maths" role="tab" aria-selected="false">Mathematics</button>
+      <button type="button" data-subject="danger" role="tab" aria-selected="false">Topics in Danger</button>
     </div>
 
     <div class="progress-grid" id="progressGrid"></div>
@@ -758,6 +937,75 @@
         if (getChapterEntry(state, subject, i).studied) done++;
       }
       return { done, total };
+    }
+
+    function subjectLabel(subj) {
+      if (subj === "physics") return "Physics";
+      if (subj === "chemistry") return "Chemistry";
+      return "Mathematics";
+    }
+
+    /** Chapters where 2026 incorrect count > correct count; highest gap first */
+    function getDangerTopics() {
+      const out = [];
+      ["physics", "chemistry", "maths"].forEach((subject) => {
+        SYLLABUS[subject].forEach((title, index) => {
+          const e = getChapterEntry(state, subject, index);
+          if (e.incorrect2026 > e.correct2026) {
+            out.push({
+              subject,
+              title,
+              index,
+              correct: e.correct2026,
+              incorrect: e.incorrect2026,
+              gap: e.incorrect2026 - e.correct2026
+            });
+          }
+        });
+      });
+      out.sort(
+        (a, b) =>
+          b.gap - a.gap || b.incorrect - a.incorrect || a.title.localeCompare(b.title)
+      );
+      return out;
+    }
+
+    function syncMiniBar(block, correct, incorrect) {
+      const max = Math.max(correct, incorrect, 1);
+      const pctC = (correct / max) * 100;
+      const pctI = (incorrect / max) * 100;
+      const elC = block.querySelector(".mini-bar-fill.mini-bar-correct");
+      const elI = block.querySelector(".mini-bar-fill.mini-bar-wrong");
+      if (elC) elC.style.height = pctC + "%";
+      if (elI) elI.style.height = pctI + "%";
+    }
+
+    function buildDangerListHTML() {
+      const items = getDangerTopics();
+      if (items.length === 0) {
+        return `<div class="danger-empty">No topics yet where incorrect &gt; correct. Enter your 2026 Q counts above.</div>`;
+      }
+      return items
+        .map(
+          (item, rank) => `
+        <div class="danger-row">
+          <span class="danger-rank">#${rank + 1}</span>
+          <div class="danger-main">
+            <span class="danger-pill ${item.subject}">${subjectLabel(item.subject)}</span>
+            <span class="danger-title">${item.title}</span>
+          </div>
+          <div class="danger-gap">
+            <span class="cor">C ${item.correct}</span> · <span class="wro">I ${item.incorrect}</span>
+            <span class="gap-small">gap +${item.gap}</span>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    function updateDangerPanel() {
+      const inner = document.getElementById("dangerListInner");
+      if (inner) inner.innerHTML = buildDangerListHTML();
     }
 
     let state = loadState();
@@ -1021,6 +1269,28 @@
           `;
           block.appendChild(row);
 
+          const mini = document.createElement("div");
+          mini.className = "chapter-mini-bars";
+          mini.setAttribute("aria-label", "2026 correct vs incorrect mini chart");
+          mini.innerHTML = `
+            <div class="mini-bar-pair">
+              <span class="mini-legend cor">Cor</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill mini-bar-correct" style="height:0%"></div>
+              </div>
+              <span class="mini-val mini-val-c">${entry.correct2026}</span>
+            </div>
+            <div class="mini-bar-pair">
+              <span class="mini-legend wro">Inc</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill mini-bar-wrong" style="height:0%"></div>
+              </div>
+              <span class="mini-val mini-val-i">${entry.incorrect2026}</span>
+            </div>
+          `;
+          block.appendChild(mini);
+          syncMiniBar(block, entry.correct2026, entry.incorrect2026);
+
           const cb = row.querySelector('input[type="checkbox"]');
           const sel = row.querySelector("select");
           const inpC = block.querySelector("input.q2026-correct");
@@ -1031,16 +1301,22 @@
             return Number.isNaN(v) || v < 0 ? 0 : v;
           }
 
-          inpC.addEventListener("change", () => {
-            const v = readNonNegInt(inpC);
-            inpC.value = v;
-            setChapter(state, subject, index, { correct2026: v });
-          });
-          inpI.addEventListener("change", () => {
-            const v = readNonNegInt(inpI);
-            inpI.value = v;
-            setChapter(state, subject, index, { incorrect2026: v });
-          });
+          function syncQFromInputs() {
+            const c = readNonNegInt(inpC);
+            const i = readNonNegInt(inpI);
+            inpC.value = c;
+            inpI.value = i;
+            setChapter(state, subject, index, { correct2026: c, incorrect2026: i });
+            syncMiniBar(block, c, i);
+            const mvC = block.querySelector(".mini-val-c");
+            const mvI = block.querySelector(".mini-val-i");
+            if (mvC) mvC.textContent = c;
+            if (mvI) mvI.textContent = i;
+            updateDangerPanel();
+          }
+
+          inpC.addEventListener("input", syncQFromInputs);
+          inpI.addEventListener("input", syncQFromInputs);
 
           cb.addEventListener("change", () => {
             const studied = cb.checked;
@@ -1062,6 +1338,22 @@
 
         container.appendChild(panel);
       });
+
+      const dangerPanel = document.createElement("div");
+      dangerPanel.id = "dangerPanel";
+      dangerPanel.className = "chapter-list hidden danger-panel";
+      dangerPanel.dataset.subject = "danger";
+      dangerPanel.setAttribute("role", "tabpanel");
+      dangerPanel.setAttribute("aria-hidden", "true");
+      dangerPanel.innerHTML = `
+        <div class="danger-head">
+          <strong>Topics in Danger</strong> — chapters where <strong>incorrect &gt; correct</strong> (2026 Qs).
+          Sorted by <strong>priority</strong>: largest gap (incorrect − correct) first.
+        </div>
+        <div id="dangerListInner"></div>
+      `;
+      container.appendChild(dangerPanel);
+      updateDangerPanel();
 
       showPanel(activeSubject);
     }
