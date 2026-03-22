@@ -289,6 +289,227 @@
       border-color: rgba(255, 255, 255, 0.15);
     }
 
+    /* Chapter block: 2026 Qs strip + row */
+    .chapter-block {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chapter-block:last-child {
+      border-bottom: none;
+    }
+
+    .qs-2026 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1.25rem;
+      padding: 0.65rem 1.15rem 0.85rem;
+      background: rgba(61, 214, 195, 0.04);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .qs-2026-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      width: 100%;
+      margin-bottom: -0.25rem;
+    }
+
+    .qs-2026-cols {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      align-items: center;
+    }
+
+    .qs-2026-cols label {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .qs-2026-cols input[type="number"] {
+      width: 4rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.45rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text);
+      outline: none;
+    }
+
+    .qs-2026-cols input[type="number"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+
+    /* Mock tests section */
+    .mock-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .mock-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mock-section h2 span {
+      color: var(--accent);
+    }
+
+    .mock-section .mock-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .mock-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1rem;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+    }
+
+    .mock-form .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mock-form label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .mock-form input {
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 0.45rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text);
+      width: 6rem;
+      outline: none;
+    }
+
+    .mock-form input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+
+    .mock-form button.add-mock {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: var(--bg-deep);
+      cursor: pointer;
+    }
+
+    .mock-form button.add-mock:hover {
+      filter: brightness(1.08);
+    }
+
+    .mock-chart-wrap {
+      position: relative;
+      width: 100%;
+      margin-top: 0.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .mock-chart-wrap canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+
+    .mock-chart-empty {
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .mock-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 0.75rem;
+      max-height: 200px;
+      overflow-y: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .mock-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .mock-table th,
+    .mock-table td {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mock-table th {
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      position: sticky;
+      top: 0;
+    }
+
+    .mock-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mock-table button.del {
+      font-family: inherit;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .mock-table button.del:hover {
+      color: #f78c6c;
+      border-color: rgba(247, 140, 108, 0.4);
+    }
+
     @media (max-width: 600px) {
       .chapter-row {
         grid-template-columns: 1fr;
@@ -310,7 +531,8 @@
     <header>
       <h1>JEE Mains <span>Prep Tracker</span></h1>
       <p>
-        Official NTA-style syllabus units. Mark chapters done and rate confidence — progress saves in your browser.
+        Official NTA-style syllabus units. Track 2026 PYQ counts per chapter, mark confidence, log mock scores, and
+        see a marks graph — all saved in your browser.
       </p>
     </header>
 
@@ -321,6 +543,27 @@
     </div>
 
     <div class="progress-grid" id="progressGrid"></div>
+
+    <section class="mock-section" aria-labelledby="mock-heading">
+      <h2 id="mock-heading">Mock tests <span>tracker</span></h2>
+      <p class="mock-desc">Add your mock scores. Serial is the mock number (1st mock, 2nd mock…). The chart plots <strong>marks</strong> (Y) vs <strong>mock #</strong> (X).</p>
+      <form class="mock-form" id="mockForm" autocomplete="off">
+        <div class="field">
+          <label for="mockSerial">Mock # (serial)</label>
+          <input type="number" id="mockSerial" min="1" step="1" placeholder="Auto" />
+        </div>
+        <div class="field">
+          <label for="mockMarks">Marks</label>
+          <input type="number" id="mockMarks" min="0" step="0.01" required placeholder="e.g. 185" />
+        </div>
+        <button type="submit" class="add-mock">Add mock</button>
+      </form>
+      <div class="mock-table-wrap" id="mockTableWrap"></div>
+      <div class="mock-chart-wrap" id="mockChartWrap">
+        <canvas id="mockChart" width="880" height="280" aria-label="Marks versus mock serial chart"></canvas>
+        <div class="mock-chart-empty" id="mockChartEmpty">Add at least one mock to see the graph.</div>
+      </div>
+    </section>
 
     <div id="chapterPanels"></div>
 
@@ -407,6 +650,13 @@
 
     const STORAGE_KEY = "jeeMainsTrackerV1";
 
+    /** Normalize saved object: chapter keys + __mocks__ array */
+    function normalizeState(raw) {
+      const s = raw && typeof raw === "object" ? raw : {};
+      if (!Array.isArray(s.__mocks__)) s.__mocks__ = [];
+      return s;
+    }
+
     const CONFIDENCE = {
       LOW: "low",
       MID: "mid",
@@ -422,10 +672,10 @@
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return {};
-        return JSON.parse(raw);
+        if (!raw) return normalizeState({});
+        return normalizeState(JSON.parse(raw));
       } catch {
-        return {};
+        return normalizeState({});
       }
     }
 
@@ -439,7 +689,58 @@
 
     function getChapterEntry(state, subject, index) {
       const key = chapterKey(subject, index);
-      return state[key] || { studied: false, confidence: CONFIDENCE.LOW };
+      const base = state[key] || {};
+      const studied = Boolean(base.studied);
+      const confidence = base.confidence || CONFIDENCE.LOW;
+      const correct2026 = Math.max(0, parseInt(String(base.correct2026 ?? 0), 10) || 0);
+      const incorrect2026 = Math.max(0, parseInt(String(base.incorrect2026 ?? 0), 10) || 0);
+      return { studied, confidence, correct2026, incorrect2026 };
+    }
+
+    function getMocks(state) {
+      const list = state.__mocks__;
+      if (!Array.isArray(list)) return [];
+      return list
+        .filter((m) => m && typeof m.serial === "number" && typeof m.marks === "number")
+        .slice()
+        .sort((a, b) => a.serial - b.serial);
+    }
+
+    function setMocks(state, mocks) {
+      state.__mocks__ = mocks;
+      saveState(state);
+    }
+
+    function nextMockSerial(state) {
+      const mocks = getMocks(state);
+      if (mocks.length === 0) return 1;
+      return Math.max(...mocks.map((m) => m.serial)) + 1;
+    }
+
+    function addOrUpdateMock(serialInput, marksNum) {
+      const mocks = getMocks(state).slice();
+      const marks = Number(marksNum);
+      if (Number.isNaN(marks) || marks < 0) return;
+
+      let serial;
+      if (serialInput === "" || serialInput == null || String(serialInput).trim() === "") {
+        serial = nextMockSerial(state);
+      } else {
+        serial = parseInt(String(serialInput), 10);
+        if (Number.isNaN(serial) || serial < 1) serial = 1;
+      }
+
+      const idx = mocks.findIndex((m) => m.serial === serial);
+      if (idx >= 0) mocks[idx] = { serial, marks };
+      else mocks.push({ serial, marks });
+
+      mocks.sort((a, b) => a.serial - b.serial);
+      setMocks(state, mocks);
+    }
+
+    function deleteMockBySerial(serial) {
+      state.__mocks__ = (state.__mocks__ || []).filter((m) => m && m.serial !== serial);
+      saveState(state);
     }
 
     function setChapter(state, subject, index, patch) {
@@ -460,6 +761,188 @@
     }
 
     let state = loadState();
+
+    function renderMockTable() {
+      const wrap = document.getElementById("mockTableWrap");
+      const mocks = getMocks(state);
+      if (mocks.length === 0) {
+        wrap.innerHTML = '<p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.5rem;">No mocks yet.</p>';
+        return;
+      }
+      wrap.innerHTML = `
+        <table class="mock-table">
+          <thead><tr><th>Mock #</th><th>Marks</th><th></th></tr></thead>
+          <tbody>
+            ${mocks
+              .map(
+                (m, i) => `
+              <tr>
+                <td>${m.serial}</td>
+                <td>${m.marks}</td>
+                <td><button type="button" class="del" data-mock-serial="${m.serial}">Remove</button></td>
+              </tr>`
+              )
+              .join("")}
+          </tbody>
+        </table>
+      `;
+      wrap.querySelectorAll("button.del").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          deleteMockBySerial(parseInt(btn.getAttribute("data-mock-serial"), 10));
+          renderMockTable();
+          drawMockChart();
+        });
+      });
+    }
+
+    function drawMockChart() {
+      const canvas = document.getElementById("mockChart");
+      const emptyEl = document.getElementById("mockChartEmpty");
+      const mocks = getMocks(state);
+      const dpr = window.devicePixelRatio || 1;
+
+      if (mocks.length === 0) {
+        canvas.style.display = "none";
+        emptyEl.style.display = "block";
+        return;
+      }
+
+      canvas.style.display = "block";
+      emptyEl.style.display = "none";
+
+      const rect = canvas.getBoundingClientRect();
+      let cssW = rect.width;
+      if (!cssW || cssW < 120) {
+        const parent = canvas.parentElement;
+        cssW = parent ? parent.clientWidth : 880;
+      }
+      cssW = Math.max(cssW, 320);
+      const cssH = 280;
+      canvas.width = Math.floor(cssW * dpr);
+      canvas.height = Math.floor(cssH * dpr);
+      canvas.style.width = cssW + "px";
+      canvas.style.height = cssH + "px";
+
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, cssW, cssH);
+
+      const padL = 52;
+      const padR = 24;
+      const padT = 28;
+      const padB = 44;
+      const plotW = cssW - padL - padR;
+      const plotH = cssH - padT - padB;
+
+      const xs = mocks.map((m) => m.serial);
+      const ys = mocks.map((m) => m.marks);
+      let xMin = Math.min(...xs);
+      let xMax = Math.max(...xs);
+      if (xMin === xMax) {
+        xMin = Math.max(1, xMin - 1);
+        xMax = xMax + 1;
+      }
+      let yMax = Math.max(...ys, 1);
+      yMax = Math.max(yMax * 1.08, yMax + 5);
+      const yMin = 0;
+
+      const xScale = (x) => padL + ((x - xMin) / (xMax - xMin)) * plotW;
+      const yScale = (y) => padT + plotH - ((y - yMin) / (yMax - yMin)) * plotH;
+
+      ctx.fillStyle = "#1a222d";
+      ctx.fillRect(padL, padT, plotW, plotH);
+
+      ctx.strokeStyle = "rgba(255,255,255,0.06)";
+      ctx.lineWidth = 1;
+      const gridY = 5;
+      for (let i = 0; i <= gridY; i++) {
+        const y = yMin + (i / gridY) * (yMax - yMin);
+        const py = yScale(y);
+        ctx.beginPath();
+        ctx.moveTo(padL, py);
+        ctx.lineTo(padL + plotW, py);
+        ctx.stroke();
+      }
+
+      ctx.fillStyle = varTextMuted();
+      ctx.font = "11px system-ui, sans-serif";
+      ctx.textAlign = "right";
+      ctx.textBaseline = "middle";
+      for (let i = 0; i <= gridY; i++) {
+        const y = yMin + (i / gridY) * (yMax - yMin);
+        const py = yScale(y);
+        ctx.fillText(Math.round(y * 10) / 10 + "", padL - 8, py);
+      }
+
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      const gridX = Math.min(12, Math.max(3, xs.length + 2));
+      for (let i = 0; i <= gridX; i++) {
+        const x = xMin + (i / gridX) * (xMax - xMin);
+        const px = xScale(x);
+        ctx.beginPath();
+        ctx.moveTo(px, padT);
+        ctx.lineTo(px, padT + plotH);
+        ctx.stroke();
+        ctx.fillStyle = varTextMuted();
+        ctx.fillText(String(Math.round(x * 10) / 10), px, padT + plotH + 8);
+      }
+
+      ctx.strokeStyle = "rgba(61, 214, 195, 0.5)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      mocks.forEach((m, i) => {
+        const px = xScale(m.serial);
+        const py = yScale(m.marks);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      });
+      ctx.stroke();
+
+      ctx.fillStyle = "#3dd6c3";
+      mocks.forEach((m) => {
+        const px = xScale(m.serial);
+        const py = yScale(m.marks);
+        ctx.beginPath();
+        ctx.arc(px, py, 5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.fillStyle = "#e8ecf1";
+      ctx.font = "600 12px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "bottom";
+      ctx.fillText("Marks vs mock serial", cssW / 2, 18);
+
+      ctx.save();
+      ctx.translate(14, padT + plotH / 2);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillStyle = varTextMuted();
+      ctx.font = "11px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("Marks", 0, 0);
+      ctx.restore();
+
+      ctx.fillStyle = varTextMuted();
+      ctx.font = "11px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      ctx.fillText("Mock # (serial)", padL + plotW / 2, cssH - 18);
+    }
+
+    function varTextMuted() {
+      return "#8b98a8";
+    }
+
+    let chartResizeScheduled = false;
+    function scheduleChartResize() {
+      if (chartResizeScheduled) return;
+      chartResizeScheduled = true;
+      requestAnimationFrame(() => {
+        chartResizeScheduled = false;
+        drawMockChart();
+      });
+    }
 
     function renderProgress() {
       const grid = document.getElementById("progressGrid");
@@ -496,10 +979,28 @@
 
         chapters.forEach((title, index) => {
           const entry = getChapterEntry(state, subject, index);
+          const block = document.createElement("div");
+          block.className = "chapter-block";
+
           const row = document.createElement("div");
           row.className = "chapter-row";
 
           const cbId = `cb-${subject}-${index}`;
+          block.innerHTML = `
+            <div class="qs-2026">
+              <span class="qs-2026-title">Qs from 2026</span>
+              <div class="qs-2026-cols">
+                <label for="c2026-${subject}-${index}">Correct
+                  <input type="number" min="0" step="1" id="c2026-${subject}-${index}" class="q2026-correct"
+                    data-subject="${subject}" data-index="${index}" value="${entry.correct2026}" />
+                </label>
+                <label for="i2026-${subject}-${index}">Incorrect
+                  <input type="number" min="0" step="1" id="i2026-${subject}-${index}" class="q2026-incorrect"
+                    data-subject="${subject}" data-index="${index}" value="${entry.incorrect2026}" />
+                </label>
+              </div>
+            </div>
+          `;
           row.innerHTML = `
             <label class="checkbox-wrap" for="${cbId}">
               <input type="checkbox" id="${cbId}" data-subject="${subject}" data-index="${index}" ${entry.studied ? "checked" : ""} />
@@ -518,9 +1019,28 @@
               </select>
             </div>
           `;
+          block.appendChild(row);
 
           const cb = row.querySelector('input[type="checkbox"]');
           const sel = row.querySelector("select");
+          const inpC = block.querySelector("input.q2026-correct");
+          const inpI = block.querySelector("input.q2026-incorrect");
+
+          function readNonNegInt(el) {
+            const v = parseInt(String(el.value), 10);
+            return Number.isNaN(v) || v < 0 ? 0 : v;
+          }
+
+          inpC.addEventListener("change", () => {
+            const v = readNonNegInt(inpC);
+            inpC.value = v;
+            setChapter(state, subject, index, { correct2026: v });
+          });
+          inpI.addEventListener("change", () => {
+            const v = readNonNegInt(inpI);
+            inpI.value = v;
+            setChapter(state, subject, index, { incorrect2026: v });
+          });
 
           cb.addEventListener("change", () => {
             const studied = cb.checked;
@@ -537,7 +1057,7 @@
             setChapter(state, subject, index, { confidence: sel.value });
           });
 
-          panel.appendChild(row);
+          panel.appendChild(block);
         });
 
         container.appendChild(panel);
@@ -567,16 +1087,37 @@
     });
 
     document.getElementById("resetBtn").addEventListener("click", () => {
-      if (confirm("Reset all chapters and confidence? This cannot be undone.")) {
-        state = {};
+      if (
+        confirm(
+          "Reset all chapter progress, 2026 question counts, mock scores, and chart? This cannot be undone."
+        )
+      ) {
+        state = normalizeState({});
         saveState(state);
         renderProgress();
         renderPanels();
+        renderMockTable();
+        drawMockChart();
       }
     });
 
+    document.getElementById("mockForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const serialEl = document.getElementById("mockSerial");
+      const marksEl = document.getElementById("mockMarks");
+      addOrUpdateMock(serialEl.value, marksEl.value);
+      marksEl.value = "";
+      serialEl.value = "";
+      renderMockTable();
+      drawMockChart();
+    });
+
+    window.addEventListener("resize", scheduleChartResize);
+
     renderProgress();
     renderPanels();
+    renderMockTable();
+    drawMockChart();
   </script>
 </body>
 </html>
