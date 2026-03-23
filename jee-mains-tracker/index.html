@@ -1053,7 +1053,11 @@
 
     function renderMockTable() {
       const wrap = document.getElementById("mockTableWrap");
-      const mocks = getMocks(state);
+      // Table should be ordered by highest marks -> lowest marks.
+      // Chart keeps serial order (handled inside drawMockChart()).
+      const mocks = getMocks(state)
+        .slice()
+        .sort((a, b) => b.marks - a.marks || a.serial - b.serial);
       if (mocks.length === 0) {
         wrap.innerHTML = '<p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.5rem;">No mocks yet.</p>';
         return;
